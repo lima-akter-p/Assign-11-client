@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import logoImg from '../../../assets/logo.png'
 
 
 export default function NavBar() {
@@ -17,8 +18,8 @@ return (
 <nav className="w-full shadow-md bg-white px-4 py-3 flex justify-between items-center relative">
 {/* Logo */}
 <div className="flex items-center gap-2">
-<img src="https://i.ibb.co/6bW4wvH/logo.png" alt="Logo" className="w-8 h-8" />
-<span className="font-semibold text-lg">My Website</span>
+<img src={logoImg} alt="Logo" className="w-8 h-8" />
+<span className="font-semibold text-lg text-violet-800">ContestHub</span>
 </div>
 
 
