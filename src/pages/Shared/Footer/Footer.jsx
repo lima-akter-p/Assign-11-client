@@ -1,0 +1,32 @@
+import React from "react";
+import { BiLogoFacebookCircle } from "react-icons/bi";
+import { FaStaylinked } from "react-icons/fa";
+
+const Footer = () => {
+  return (
+    <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
+      <nav className="grid grid-flow-col gap-4">
+        <a className="link link-hover">About us</a>
+        <a className="link link-hover">Contact</a>
+        <a className="link link-hover">Jobs</a>
+        <a className="link link-hover">Press kit</a>
+      </nav>
+      <nav>
+        <div className="grid grid-flow-col items-center gap-4">
+            <BiLogoFacebookCircle className="w-10 h-10"/>
+
+            <FaStaylinked className="w-8 h-8" />
+          
+        </div>
+      </nav>
+      <aside>
+        <p>
+          Copyright © {new Date().getFullYear()} - All right reserved by ACME
+          Industries Ltd
+        </p>
+      </aside>
+    </footer>
+  );
+};
+
+export default Footer;
