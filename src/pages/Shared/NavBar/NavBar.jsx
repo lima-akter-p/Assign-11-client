@@ -1,77 +1,107 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import logoImg from "../../../assets/logo.png";
 import useAuth from "../../../Hooks/useAuth";
+import { toast } from "react-toastify";
 
 export default function NavBar() {
-  const { user } = useAuth();
   const [open, setOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const { user, logOut } = useAuth();
+  const navigate = useNavigate();
 
-  // const user = {
-  // name: "Lima Akter",
-  // photo: "https://i.ibb.co/7kV3ZCw/user.png",
-  // };
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+         toast.success("Logout Successful!");
+         navigate('/')
+        setProfileOpen(false);
+        setOpen(false);
+       
+
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const links = (
+    <>
+      <Link to="/" className="hover:text-blue-500">Home</Link>
+      <Link to="/contests" className="hover:text-blue-500">All Contests</Link>
+      <Link to="/extra" className="hover:text-blue-500">Extra Section</Link>
+    </>
+  );
 
   return (
-    
-
-
     <nav className="w-full shadow-md bg-white px-4 py-3 flex justify-between items-center relative">
       {/* Logo */}
       <div className="flex items-center gap-2">
-        <img src={logoImg} alt="Logo" className="w-8 h-8" />
-        <span className="font-semibold text-lg text-violet-800">
+       <Link to="/"><img src={logoImg} alt="Logo" className="w-8 h-8"/></Link>
+        <span className="font-semibold text-2xl text-violet-800">
           ContestHub
         </span>
+        
       </div>
 
       {/* Desktop Menu */}
-      <div className="hidden md:flex gap-6 text-base">
-        <Link to="/" className="hover:text-blue-500">
-          Home
-        </Link>
-        <Link to="/contests" className="hover:text-blue-500">
-          All Contests
-        </Link>
-        <Link to="/extra" className="hover:text-blue-500">
-          Extra Section
-        </Link>
-      </div>
+      <div className="hidden md:flex gap-6 text-base">{links}</div>
 
-      {user && (
-        <div className="relative hidden md:block">
-          <div className="flex gap-6">
-            <img
-            src={user.photo}
-            alt="profile"
-            className="w-10 h-10 rounded-full cursor-pointer"
-            onClick={() => setProfileOpen(!profileOpen)}
-          />
-          {
-            user?<button className="btn bg-violet-600 text-white">Logout</button> :
-             <button className="btn bg-violet-600 text-white">Login</button>
-            
-          }
+      {/* Desktop Right Side: Profile OR Login/Logout Button */}
+      <div className="hidden md:flex items-center gap-4">
+        {user ? (
+          <>
+            {/* Profile Dropdown */}
+            <div className="relative">
+              <img
+                src={user.photoURL}
+                alt="profile"
+                className="w-10 h-10 rounded-full cursor-pointer"
+                onClick={() => setProfileOpen(!profileOpen)}
+              />
 
-          </div>
-          {profileOpen && (
-            <div className="absolute right-0 bg-white shadow-lg rounded-lg w-40 mt-2 py-2 z-50">
-              <p className="px-4 py-2 font-semibold">{user.name}</p>
-              <Link
-                className="px-4 py-2 block hover:bg-gray-100"
-                to="/dashboard"
-              >
-                Dashboard
-              </Link>
-              <button className="px-4 py-2 w-full text-left hover:bg-gray-100">
-                Logout
-              </button>
+              {profileOpen && (
+                <div className="absolute right-0 bg-white shadow-lg rounded-lg w-40 mt-2 py-2 z-50">
+                  <p className="px-4 py-2 font-semibold">{user.displayName}</p>
+                  <Link
+                    className="px-4 py-2 block hover:bg-gray-100"
+                    to="/dashboard"
+                    onClick={() => setProfileOpen(false)}
+                  >
+                    Dashboard
+                  </Link>
+                  <button
+                    className="px-4 py-2 w-full text-left hover:bg-gray-100"
+                    onClick={handleLogOut}
+                  >
+                    Logout
+                  </button>
+                  
+                </div>
+                
+              )}
             </div>
-          )}
-        </div>
-      )}
-      {/* Profile (CLICK dropdown) */}
+
+            {/* Logout Button - Also visible beside profile */}
+            <button
+              onClick={handleLogOut}
+              className="px-4 py-2 bg-violet-500 text-white rounded-md"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <Link
+            to="/login"
+            className="px-4 py-2 bg-violet-600 text-white rounded-md"
+          >
+            Login
+          </Link>
+         
+        )}
+        <div> 
+          <Link className="btn bg-violet-600 text-white" to="/creator">Be a creator</Link>
+          </div>
+      </div>
+      
 
       {/* Mobile Menu Button */}
       <button
@@ -97,34 +127,46 @@ export default function NavBar() {
       {/* Mobile Menu */}
       {open && (
         <div className="absolute top-16 left-0 w-full bg-white shadow-md flex flex-col md:hidden p-4 gap-4 z-50">
-          <Link to="/" className="hover:text-blue-500">
-            Home
-          </Link>
-          <Link to="/contests" className="hover:text-blue-500">
-            All Contests
-          </Link>
-          <Link to="/extra" className="hover:text-blue-500">
-            Extra Section
-          </Link>
 
-          {/* Mobile Profile */}
-          {user && (
-            <div className="mt-4 border-t pt-4 flex items-center gap-3">
-              <img
-                src={user.photo}
-                alt="profile"
-                className="w-10 h-10 rounded-full"
-              />
-              <span className="font-medium">{user.name}</span>
-            </div>
-          )}
+          {links}
 
-          <Link className="px-1 py-2 hover:text-blue-500" to="/dashboard"> 
-            Dashboard
-          </Link>
-          <button className="text-left px-1 py-2 hover:text-blue-500">
-            Logout
-          </button>
+          <div className="border-t pt-4">
+            {user ? (
+              <>
+                <div className="flex items-center gap-3">
+                  <img
+                    src={user.photoURL}
+                    alt="profile"
+                    className="w-10 h-10 rounded-full"
+                  />
+                  <span className="font-medium">{user.displayName}</span>
+                </div>
+
+                <Link
+                  className="px-1 py-2 hover:text-blue-500"
+                  to="/dashboard"
+                  onClick={() => setOpen(false)}
+                >
+                  Dashboard
+                </Link>
+
+                <button
+                  className="text-left px-1 py-2 hover:text-blue-500"
+                  onClick={handleLogOut}
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="px-1 py-2 hover:text-blue-500"
+                onClick={() => setOpen(false)}
+              >
+                Login
+              </Link>
+            )}
+          </div>
         </div>
       )}
     </nav>

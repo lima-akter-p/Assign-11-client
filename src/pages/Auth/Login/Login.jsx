@@ -1,27 +1,37 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import useAuth from '../../../Hooks/useAuth';
-import { Link, useLocation } from 'react-router';
-import SocialLogin from '../SocialLogin/SocialLogin';
+import React from "react";
+import { useForm } from "react-hook-form";
+import useAuth from "../../../Hooks/useAuth";
+import { Link, useLocation, useNavigate } from "react-router";
+import SocialLogin from "../SocialLogin/SocialLogin";
+import { toast } from "react-toastify";
 
 const Login = () => {
-     const location = useLocation();
-    
-     const {register,handleSubmit,formState: { errors },} = useForm();
-     const { signInUser} = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { signInUser } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  
 
-    const handleLogin = (data) => {
+  const handleLogin = (data) => {
     console.log(data);
-     signInUser(data.email,data.password)
-    .then(result =>{
-      console.log(result)
-    })
-    .catch(error =>{
-      console.log(error)
-    })
-    };
-    return (
-         <div className="flex justify-center items-center min-h-screen bg-linear-to-br from-indigo-100 via-white to-indigo-50 px-4">
+    signInUser(data.email, data.password)
+      .then(() => {
+        toast.success("Login Successful!");
+
+        setTimeout(() => {
+          navigate(location?.state || "/");
+        }, 800); // 0.8 sec delay → toast দেখতে পাওয়া যায়
+      })
+      .catch(() => {
+        toast.error("Login failed!");
+      });
+   };
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-linear-to-br from-indigo-100 via-white to-indigo-50 px-4">
       <div className="card bg-white w-full max-w-sm shadow-xl rounded-xl border border-gray-200 p-5">
         <h3 className="text-3xl text-center font-bold text-indigo-600">
           Welcome back
@@ -32,11 +42,6 @@ const Login = () => {
 
         <form className="card-body px-2" onSubmit={handleSubmit(handleLogin)}>
           <fieldset className="fieldset space-y-2">
-
-           
-            
-
-          
             {/* email */}
             <label className="label font-semibold">Email</label>
             <input
@@ -83,7 +88,7 @@ const Login = () => {
           </fieldset>
 
           <p className="text-center text-sm mt-4">
-            Are you new to ContestHub? {" "}
+            Are you new to ContestHub?{" "}
             <Link
               state={location.state}
               className="text-indigo-700 underline"
@@ -96,7 +101,7 @@ const Login = () => {
         <SocialLogin></SocialLogin>
       </div>
     </div>
-    );
+  );
 };
 
 export default Login;

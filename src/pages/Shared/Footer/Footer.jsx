@@ -1,15 +1,20 @@
 import React from "react";
 import { BiLogoFacebookCircle } from "react-icons/bi";
 import { FaStaylinked } from "react-icons/fa";
+import Logo from "../../../Components/Logo/Logo";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
-      <nav className="grid grid-flow-col gap-4">
-        <a className="link link-hover">About us</a>
+    <footer className="footer footer-horizontal footer-center bg-black text-white rounded p-10">
+      <nav className="grid grid-flow gap-4">
+        <div>
+          <Logo></Logo>
+        </div>
+        <div  className="flex flex-col  gap-2">
+        <a className="link link-hover ">About us</a>
         <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
+        </div>
+      
       </nav>
       <nav>
         <div className="grid grid-flow-col items-center gap-4">
@@ -21,8 +26,7 @@ const Footer = () => {
       </nav>
       <aside>
         <p>
-          Copyright © {new Date().getFullYear()} - All right reserved by ACME
-          Industries Ltd
+          Copyright © {new Date().getFullYear()} - All right reserved by ContestHub
         </p>
       </aside>
     </footer>

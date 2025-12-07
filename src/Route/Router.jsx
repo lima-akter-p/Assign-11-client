@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home/Home";
 import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
+import PrivateRoute from "./PrivateRoute";
+import Creator from "../pages/Creator/Creator";
 
 
   export const router = createBrowserRouter([
@@ -14,6 +16,11 @@ import Register from "../pages/Auth/Register/Register";
         {
             index:true,
             Component:Home
+
+        },
+        {
+          path:'creator',
+          element:<PrivateRoute><Creator></Creator></PrivateRoute>
 
         }
     ]
