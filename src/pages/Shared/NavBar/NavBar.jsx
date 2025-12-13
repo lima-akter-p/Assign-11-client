@@ -13,21 +13,29 @@ export default function NavBar() {
   const handleLogOut = () => {
     logOut()
       .then(() => {
-         toast.success("Logout Successful!");
-         navigate('/')
+        toast.success("Logout Successful!");
+        navigate("/");
         setProfileOpen(false);
         setOpen(false);
-       
-
       })
       .catch((error) => console.log(error));
   };
 
   const links = (
     <>
-      <Link to="/" className="hover:text-blue-500">Home</Link>
-      <Link to="/contests" className="hover:text-blue-500">All Contests</Link>
-      <Link to="/extra" className="hover:text-blue-500">Extra Section</Link>
+      <Link to="/" className="hover:text-blue-500">
+        Home
+      </Link>
+      <Link to="/contests" className="hover:text-blue-500">
+        All Contests
+      </Link>
+
+      {user && (
+        <>
+          <Link to="/dashboard/add-contests" className="hover:text-blue-500">Add Contest</Link>
+          <Link to="/dashboard/my-contests" className="hover:text-blue-500"> My Contests</Link>
+        </>
+      )}
     </>
   );
 
@@ -35,11 +43,12 @@ export default function NavBar() {
     <nav className="w-full shadow-md bg-white px-4 py-3 flex justify-between items-center relative">
       {/* Logo */}
       <div className="flex items-center gap-2">
-       <Link to="/"><img src={logoImg} alt="Logo" className="w-8 h-8"/></Link>
+        <Link to="/">
+          <img src={logoImg} alt="Logo" className="w-8 h-8" />
+        </Link>
         <span className="font-semibold text-2xl text-violet-800">
           ContestHub
         </span>
-        
       </div>
 
       {/* Desktop Menu */}
@@ -74,9 +83,7 @@ export default function NavBar() {
                   >
                     Logout
                   </button>
-                  
                 </div>
-                
               )}
             </div>
 
@@ -95,13 +102,8 @@ export default function NavBar() {
           >
             Login
           </Link>
-         
         )}
-        <div> 
-          <Link className="btn bg-violet-600 text-white" to="/creator">Be a creator</Link>
-          </div>
       </div>
-      
 
       {/* Mobile Menu Button */}
       <button
@@ -127,7 +129,6 @@ export default function NavBar() {
       {/* Mobile Menu */}
       {open && (
         <div className="absolute top-16 left-0 w-full bg-white shadow-md flex flex-col md:hidden p-4 gap-4 z-50">
-
           {links}
 
           <div className="border-t pt-4">

@@ -40,7 +40,7 @@ const PopularContest = () => {
       </div>
 
       {/* 🔥 Cards */}
-      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10  grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {popular.map((item) => (
           <div
             key={item._id}
@@ -83,16 +83,16 @@ const PopularContest = () => {
                 Participants: {item.participants}
               </p>
 
-              <button
-                className="
-                  w-full bg-violet-600 text-white py-2.5 
+              <Link to={`/view-details/${item._id}`}>
+            
+                <button
+                  className="w-full bg-violet-600 text-white py-2.5 
                   rounded-xl font-medium 
                   hover:bg-violet-700 transition-all duration-300
-                  hover:shadow-md
-                "
-              >
-                View Details
-              </button>
+                  hover:shadow-md">
+                  View Details
+                </button>
+              </Link>
             </div>
           </div>
         ))}
