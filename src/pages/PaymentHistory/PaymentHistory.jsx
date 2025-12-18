@@ -12,7 +12,7 @@ const PaymentHistory = () => {
         queryKey:['payments',user.email],
         queryFn:async () =>{
 
-            const res = await axiosSecure.get(`http://localhost:3000/payments?email=${user.email}`)
+            const res = await axiosSecure.get(`https://assign-11-server-eight.vercel.app/payments?email=${user.email}`)
             return res.data;
 
         }

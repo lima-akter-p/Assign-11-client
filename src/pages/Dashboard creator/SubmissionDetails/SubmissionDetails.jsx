@@ -11,7 +11,7 @@ export default function SubmissionDetails() {
     queryKey: ["submissionDetails", id],
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `http://localhost:3000/dashboard/submissions/details/${id}`
+        `https://assign-11-server-eight.vercel.app/dashboard/submissions/details/${id}`
       );
       return res.data;
     },

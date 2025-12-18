@@ -1,7 +1,5 @@
 # ContestHub
-
-
-
+https://contest-hub-client-f1f2b.web.app/
 
 # 10 bullet point about ContestHub
 1.Online Platform for hosting and participating in contest.
