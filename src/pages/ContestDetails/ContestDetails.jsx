@@ -27,7 +27,7 @@ export default function ContestDetails() {
     },
     enabled: !!id, // wait until id exists
   });
-   const { data: participentCount } = useQuery({
+  const { data: participentCount } = useQuery({
     queryKey: ["participentCount", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/participent-count/${id}`);
@@ -35,15 +35,16 @@ export default function ContestDetails() {
     },
     enabled: !!id, // wait until id exists
   });
-     const { data: isRegistered } = useQuery({
+  const { data: isRegistered } = useQuery({
     queryKey: ["isRegistered", id],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/isRegistered?id=${id}&email=${user.email}`);
+      const res = await axiosSecure.get(
+        `/isRegistered?id=${id}&email=${user.email}`
+      );
       return res.data;
     },
     enabled: !!user.email, // wait until id exists
   });
-   
 
   // Countdown timer
   useEffect(() => {
@@ -90,10 +91,13 @@ export default function ContestDetails() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const paymentInfo = {
-          email:user.email,
+          email: user.email,
           priceMoney: contest.priceMoney,
           contestId: contest._id,
           contestName: contest.contestName,
+          deadline:contest.deadline
+
+
         };
 
         const res = await axiosSecure.post(
@@ -109,18 +113,23 @@ export default function ContestDetails() {
   const handleTaskSubmit = async (e) => {
     e.preventDefault();
     const task = e.target.task.value;
-
-    await axiosSecure.post(`/submission-task/${id}`, {
-      email: user.email,
+    const newSubmission = {
+      submissionEmail: user?.email,
+      submissionName: user?.displayName,
       task,
-    });
+      contestId:id
+    };
+
+    const res = await axiosSecure.post(`/submission-task/${id}`, newSubmission);
+    if (res.data.insertedId) {
+      Swal.fire("Submitted!", "Your task is submitted.", "success");
+    }
 
     setShowModal(false);
-    Swal.fire("Submitted!", "Your task is submitted.", "success");
+
     // alert("Task Submitted!");
   };
 
- 
   console.log(isEnded);
 
   return (
@@ -131,14 +140,12 @@ export default function ContestDetails() {
       {/* Big Banner */}
       <img
         src={contest.image}
-        className="w-full rounded-xl mb-6"
+        className="w-full h-100 rounded-xl mb-6"
         alt={contest.name}
       />
 
       {/* Participants */}
-      <p className="text-lg font-semibold">
-        Participants: {participentCount}
-      </p>
+      <p className="text-lg font-semibold">Participants: {participentCount}</p>
 
       {/* Countdown */}
       <p

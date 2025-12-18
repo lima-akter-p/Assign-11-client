@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  reload,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -23,7 +24,7 @@ const AuthProvider = ({ children }) => {
 
     return updateProfile(auth.currentUser, updatedObj)
       .then(() => {
-        return loading(auth.currentUser);
+        return reload(auth.currentUser);
       })
       .then(() => {
         setUser(auth.currentUser);
@@ -56,6 +57,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
+      console.log(currentUser)
     });
     return () => {
       unSubscribe;

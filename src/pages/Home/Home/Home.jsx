@@ -6,10 +6,12 @@ import UpcomingBigContests from './UpcomingContest/UpcomingContest';
 import StatisticsSection from './StaticsSection/StaticsSection';
 import MotivationSection from './MotivationSection/MotivationSection';
 
+
 const Home = () => {
     return (
         <div>
            <Banner></Banner>
+          
            <PopularContest></PopularContest>
            <WinnerAd></WinnerAd>
            <MotivationSection></MotivationSection>

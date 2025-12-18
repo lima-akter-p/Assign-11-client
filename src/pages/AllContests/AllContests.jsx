@@ -13,7 +13,7 @@ const AllContests = () => {
   const { data: contests = [], isLoading } = useQuery({
     queryKey: ["allContests"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/contests");
+      const res = await axiosSecure.get("/contests?status=approved");
       return res.data;
     },
   });
@@ -53,6 +53,9 @@ const AllContests = () => {
                       <h3 className="text-2xl font-bold text-gray-900 mb-2">
                         {item.contestName}
                       </h3>
+
+                      
+                      <div className="badge badge-primary mb-3">{item.contestType}</div>
         
                       {/* Short Description */}
                       <p className="text-gray-600 text-sm mb-3">

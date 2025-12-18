@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import logoImg from "../../../assets/logo.png";
 import useAuth from "../../../Hooks/useAuth";
 import { toast } from "react-toastify";
+import Mytheme from "../../../Components/Mytheme/Mytheme";
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
@@ -26,21 +27,29 @@ export default function NavBar() {
       <Link to="/" className="hover:text-blue-500">
         Home
       </Link>
-      <Link to="/contests" className="hover:text-blue-500">
+      <Link to="all-contests" className="hover:text-blue-500">
         All Contests
       </Link>
+       <Link to="about-us" className="hover:text-blue-500">
+        About Us
+      </Link>
+       <Link to="contac-us" className="hover:text-blue-500">
+        Contac Us
+      </Link>
+      <Mytheme></Mytheme>
 
-      {user && (
+      {/* {user && (
         <>
           <Link to="/dashboard/add-contests" className="hover:text-blue-500">Add Contest</Link>
           <Link to="/dashboard/my-contests" className="hover:text-blue-500"> My Contests</Link>
+           
         </>
-      )}
+      )} */}
     </>
   );
 
   return (
-    <nav className="w-full shadow-md bg-white px-4 py-3 flex justify-between items-center relative">
+    <nav className="w-full shadow-md  px-4 py-3 flex justify-between items-center relative">
       {/* Logo */}
       <div className="flex items-center gap-2">
         <Link to="/">
@@ -77,6 +86,7 @@ export default function NavBar() {
                   >
                     Dashboard
                   </Link>
+                  
                   <button
                     className="px-4 py-2 w-full text-left hover:bg-gray-100"
                     onClick={handleLogOut}

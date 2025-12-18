@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
 
 export default function AddContests() {
   const {
@@ -14,9 +15,11 @@ export default function AddContests() {
     formState: { errors },
   } = useForm();
   const axiosSecure = useAxiosSecure();
+  const {user} = useAuth();
 
   const onSubmit = async (data) => {
-    console.log("Form Data:", data);
+   data.status = "pending",
+   data.email = user.email
     try {
       const res = await axiosSecure.post("/contests", data);
       console.log("Saved to DB:", res.data);
@@ -31,7 +34,7 @@ export default function AddContests() {
 
       reset();
 
-      reset();
+      
     } catch (error) {
       console.error("Error saving contest:", error);
       alert("Failed to add contest!");
@@ -104,27 +107,27 @@ export default function AddContests() {
               </p>
             )}
           </div>
-          {/* Participant */}
+{/*           
           <div className="space-y-1">
-            <label className="font-semibold text-gray-700">Participant</label> 
+            <label className="font-semibold text-gray-700">Participants</label>
 
-             <input
+            <input
               type="number"
-              {...register("participent", {
+              {...register("participants", {
                 required: "Participant number is required",
+                valueAsNumber: true, // ✅ string → number
               })}
               className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition"
               placeholder="1000"
             />
 
-            {errors.participent && (
+            {errors.participants && (
               <p className="text-red-500 text-sm">
-                {errors.participent.message}
+                {errors.participants.message}
               </p>
             )}
-          </div> 
-        
-       
+          </div> */}
+
           {/* Task Instruction */}
           <div className="space-y-1">
             <label className="font-semibold text-gray-700">

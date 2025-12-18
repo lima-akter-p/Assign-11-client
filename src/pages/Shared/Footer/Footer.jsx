@@ -2,6 +2,7 @@ import React from "react";
 import { BiLogoFacebookCircle } from "react-icons/bi";
 import { FaStaylinked } from "react-icons/fa";
 import Logo from "../../../Components/Logo/Logo";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -11,14 +12,18 @@ const Footer = () => {
           <Logo></Logo>
         </div>
         <div  className="flex flex-col  gap-2">
-        <a className="link link-hover ">About us</a>
-        <a className="link link-hover">Contact</a>
+        <Link to="about-us"><a className="link link-hover ">About us</a></Link>
+        <Link to="contac-us"><a className="link link-hover">Contact</a></Link>
         </div>
       
-      </nav>
+      </nav> 
       <nav>
         <div className="grid grid-flow-col items-center gap-4">
-            <BiLogoFacebookCircle className="w-10 h-10"/>
+          <a href="https://www.facebook.com/lima.akther.284949" ><BiLogoFacebookCircle className="w-10 h-20"/> </a>
+            
+              {/* <a href="https://www.facebook.com/lima.akther.284949" className="hover:text-white transition-colors">
+                            <FaFacebook />
+                        </a> */}
 
             <FaStaylinked className="w-8 h-8" />
           

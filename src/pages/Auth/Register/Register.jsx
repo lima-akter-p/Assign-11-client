@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Register = () => {
   const {
@@ -14,15 +15,33 @@ const Register = () => {
   const { registerUser, updateUser } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  console.log("in the register page", location);
+  const axiosSecure = useAxiosSecure();
+  // console.log("in the register page", location);
 
   const handleRegistration = (data) => {
-    console.log(data);
+    // console.log(data);
+
+    // create user in the database
+    const userInfo = {
+      email:data.email,
+      displayName:data.name,
+      photoURL:data.photo,
+      
+    }
+    axiosSecure.post('/users',userInfo)
+    .then(res =>{
+      if(res.data.insertedId){
+        console.log('user created in the database');
+      }
+    })
+
+
+    // update user profile to firebase
     const updatedObj = {
       photoURL: data.photo,
       displayName: data.name,
     };
-    console.log(updatedObj);
+    // console.log(updatedObj);
 
     registerUser(data.email, data.password, data.name, data.photo)
       .then(() => {

@@ -17,6 +17,16 @@ import MyCreatedContests from "../pages/Dashboard creator/MyCreatedContests/MyCr
 // import Payment from "../pages/Payment/Payment";
 import PaymentSuccess from "../pages/Payment/PaymentSuccess";
 import PaymentCanceled from "../pages/Payment/PaymentCanceled";
+import UserManagement from "../pages/Dashboard users/UserManagement/UserManagement";
+import PaymentHistory from "../pages/PaymentHistory/PaymentHistory";
+import EditContest from "../pages/Dashboard creator/EditContests/EditContests";
+import AdminRoute from "./AdminRoute";
+import ManageContest from "../pages/Dashboard users/ManageContest";
+import MyParticipatedContests from "../pages/Dashboard creator/MyPaticipatedContest/MyParticipatedContest";
+import MyWinningContests from "../pages/Dashboard creator/MyWinningContest/MyWinningContest";
+import AboutUs from "../pages/AboutUs/AboutUs";
+import ContactUs from "../pages/ContacUs/ContacUs";
+import MyProfile from "../pages/Dashboard creator/MyProfile/MyProfile";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +37,18 @@ export const router = createBrowserRouter([
         index: true,
         Component: Home,
       },
+      {
+        path: "about-us",
+        element:<AboutUs></AboutUs>
+
+      },
+      {
+        path:"contac-us",
+        element:<ContactUs></ContactUs>
+      },
+
+      
+
       {
         path: "creator",
         element: (
@@ -122,10 +144,44 @@ export const router = createBrowserRouter([
         path: "my-contests",
         element: <MyCreatedContests></MyCreatedContests>,
       },
+      {
+
+        path:'payment-history',
+        Component:PaymentHistory
+
+      },
+
+      {
+
+        path:"users-management",
+        element:<AdminRoute><UserManagement></UserManagement></AdminRoute>
+      },
+      {
+        path:"manage-contest",
+        element:<AdminRoute><ManageContest></ManageContest></AdminRoute>
+      },
+      {
+        path:'participated-contest',
+        element:<MyParticipatedContests></MyParticipatedContests>
+
+      },
 
        {
-        path: "submissions",
+        path: "submissions/:id",
         element: <SubmittedTasks></SubmittedTasks>,
+       },
+       {
+        path:'edit-contest/:id',
+        element:<EditContest></EditContest>
+       },
+       {
+        path:'winning-contest',
+        element:<MyWinningContests></MyWinningContests>
+       }, 
+       {
+        path:'my-profile',
+        element:<MyProfile></MyProfile>
+
        }
     
     ],

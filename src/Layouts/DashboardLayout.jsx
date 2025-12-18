@@ -1,9 +1,17 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
+import { FaMedal, FaPlusCircle, FaRegCreditCard, FaUser } from "react-icons/fa";
+import { FaTrophy } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
+import { ToastContainer } from "react-toastify";
+import useRole from "../Hooks/useRole";
 
 const DashboardLayout = () => {
+  const { role } = useRole();
+  console.log(role);
   return (
     <div className="drawer lg:drawer-open">
+      <ToastContainer></ToastContainer>
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}
@@ -47,7 +55,8 @@ const DashboardLayout = () => {
           <ul className="menu w-full grow">
             {/* List item */}
             <li>
-              <Link to="/"
+              <Link
+                to="/"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Homepage"
               >
@@ -70,40 +79,144 @@ const DashboardLayout = () => {
             </li>
 
             {/* our dashboard links */}
-             <li>
-                <NavLink to="/dashboard/my-contests">My Contests</NavLink>
-             </li>
+            {role === "creator" && (
+              <>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="My contest"
+                    to="/dashboard/my-contests"
+                  >
+                    <span>
+                      <FaTrophy></FaTrophy>
+                    </span>
+                    <span className="is-drawer-close:hidden"> My Contests</span>
+                  </NavLink>
+                </li>
 
-             <li>
-                <NavLink to="/dashboard/add-contests">Add Contests</NavLink>
-             </li>
-    
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Add Contest"
+                    to="/dashboard/add-contests"
+                  >
+                    <span>
+                      <FaPlusCircle></FaPlusCircle>
+                    </span>
+                    <span className="is-drawer-close:hidden">
+                      {" "}
+                      Add Contests
+                    </span>
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            {role === "user" && (
+              <>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip=" My Parcicipated Contest"
+                    to="/dashboard/participated-contest"
+                  >
+                    <span>
+                      <FaTrophy></FaTrophy>
+                    </span>
+                    <span className="is-drawer-close:hidden">
+                      {" "}
+                      My Parcicipated Contest
+                    </span>
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Payment History"
+                    to="/dashboard/payment-history"
+                  >
+                    <span>
+                      <FaRegCreditCard />
+                    </span>
+                    <span className="is-drawer-close:hidden">
+                      {" "}
+                      Payment History
+                    </span>
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="My Winning Contest"
+                    to="/dashboard/winning-contest"
+                  >
+                    <span>
+                      <FaMedal />
+                    </span>
+                    <span className="is-drawer-close:hidden">
+                      {" "}
+                      My Winning Contest
+                    </span>
+                  </NavLink>
+                </li>
+
+                   <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="My Profile"
+                    to="/dashboard/my-profile"
+                  >
+                    <span>
+                     <CgProfile />
+                    </span>
+                    <span className="is-drawer-close:hidden">
+                      {" "}
+                      My Profile
+                    </span>
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            {role === "admin" && (
+              <>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Users Management"
+                    to="/dashboard/users-management"
+                  >
+                    <span>
+                      <FaUser></FaUser>
+                    </span>
+                    <span className="is-drawer-close:hidden">
+                      {" "}
+                      Users Manage
+                    </span>
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Manage Contest"
+                    to="/dashboard/manage-contest"
+                  >
+                    <span>
+                      <FaTrophy></FaTrophy>
+                    </span>
+                    <span className="is-drawer-close:hidden">
+                      {" "}
+                      Manage Contest
+                    </span>
+                  </NavLink>
+                </li>
+              </>
+            )}
 
             {/* List item */}
-            <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Settings"
-              >
-                {/* Settings icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
-                >
-                  <path d="M20 7h-9"></path>
-                  <path d="M14 17H5"></path>
-                  <circle cx="17" cy="17" r="3"></circle>
-                  <circle cx="7" cy="7" r="3"></circle>
-                </svg>
-                <span className="is-drawer-close:hidden">Settings</span>
-              </button>
-            </li>
           </ul>
         </div>
       </div>

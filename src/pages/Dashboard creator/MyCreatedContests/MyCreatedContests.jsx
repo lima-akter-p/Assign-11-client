@@ -3,6 +3,7 @@ import { Link } from "react-router";
 
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 export default function MyCreatedContests() {
   const axiosSecure = useAxiosSecure();
@@ -12,9 +13,7 @@ export default function MyCreatedContests() {
   const { data: contests = [], refetch } = useQuery({
     queryKey: ["myContests", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(
-        `http://localhost:3000/my-contests?email=${user.email}`
-      );
+      const res = await axiosSecure.get(`/my-contests?email=${user.email}`);
       return res.data;
     },
     enabled: !!user?.email,
@@ -25,7 +24,10 @@ export default function MyCreatedContests() {
     const confirmDelete = confirm("Are you sure you want to delete?");
     if (!confirmDelete) return;
 
-    await axiosSecure.delete(`http://localhost:3000/contests/${id}`);
+    const res = await axiosSecure.delete(`/contests-delete/${id}`);
+    if (res.data.deletedCount > 0) {
+      toast.success("deleted successful");
+    }
     refetch();
   };
 
@@ -59,9 +61,9 @@ export default function MyCreatedContests() {
                   <span
                     className={`px-3 py-1 text-white rounded text-sm
                       ${
-                        contest.status === "Pending"
+                        contest.status === "pending"
                           ? "bg-yellow-500"
-                          : contest.status === "Confirmed"
+                          : contest.status === "approved"
                           ? "bg-green-600"
                           : "bg-red-600"
                       }
@@ -76,17 +78,17 @@ export default function MyCreatedContests() {
                 <td className="flex gap-2">
                   {/* See Submissions */}
                   <Link
-                    to={`/submissions/${contest._id}`}
+                    to={`/dashboard/submissions/${contest._id}`}
                     className="px-3 py-1 bg-blue-500 text-white rounded"
                   >
                     See Submissions
                   </Link>
 
                   {/* Edit & Delete visible ONLY if Pending */}
-                  {contest.status === "Pending" && (
+                  {contest.status === "pending" && (
                     <>
                       <Link
-                        to={`/edit-contest/${contest._id}`}
+                        to={`/dashboard/edit-contest/${contest._id}`}
                         className="px-3 py-1 bg-green-500 text-white rounded"
                       >
                         Edit

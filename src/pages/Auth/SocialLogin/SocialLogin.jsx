@@ -2,25 +2,39 @@ import React from "react";
 import useAuth from "../../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const SocialLogin = () => {
   const { signInGoogle } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
 
   const handleGoogleSignIn = () => {
     signInGoogle()
-      .then(() => {
+      .then((result) => {
         toast.success("Register Successful!");
 
         setTimeout(() => {
-          navigate(location?.state || '/');
-        }, 800); 
+          
+          // create user in database
+          const userInfo = {
+            email: result.user.email,
+            displayName: result.user.displayName,
+            photoURL: result.user.photoURL
+,
+          }
+          axiosSecure.post('/users',userInfo)
+          .then(res =>{
+            console.log('user data has been store',res.data)
+            navigate(location?.state || "/");
+          })
+        }, 800);
       })
       .catch(() => {
         toast.error("Register failed!");
-      })
-    };
+      });
+  };
   return (
     <div className="text-center pb-6">
       <p className="mb-2">OR</p>
