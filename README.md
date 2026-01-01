@@ -2,7 +2,7 @@
 
 
 
-🚀 # Project Overview
+🚀  Project Overview
 
 ContestHub allows:
 
@@ -46,13 +46,13 @@ ContestHub allows:
 
 
 
- react
-react-router
- axios
- firebase
- tailwindcss
- dotenv
- express
+ react,
+react-router,
+ axios,
+ firebase,
+ tailwindcss,
+ dotenv,
+ express,
 mongoose
 
 
@@ -62,7 +62,7 @@ You can copy dependencies from your package.json later.
 
 ## Follow these steps:
 
-1️⃣ -Clone  repository
+1️⃣ Clone  repository
  
 
 2️⃣  Openfo lder
@@ -71,15 +71,15 @@ You can copy dependencies from your package.json later.
 3️⃣  Install dependencies
 npm install
 
-4️⃣ - Create .env file 
+4️⃣  Create .env file 
 
 ## Add keys like:
 
-- VITE_API_KEY=
-- DATABASE_URL=
-- JWT_SECRET=
+ VITE_API_KEY=
+ DATABASE_URL=
+ JWT_SECRET=
 
-5️⃣ - Run the project
+5️⃣  Run the project
 npm run dev
 
 
@@ -88,7 +88,8 @@ npm run dev
 
 🌍  Live Project Links
 
-🔗 Live Website: https://contest-hub-client-f1f2b.web.app/
+🔗 Live Website: https://contest-hub-client-f1f2b.web.app
+
 
 
 
