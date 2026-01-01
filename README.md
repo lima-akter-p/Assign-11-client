@@ -14,7 +14,7 @@ ContestHub allows:
 
  - It is designed to make online competitions simple, fair, and organized.
 
-🛠️  # Technologies Used
+🛠️ Technologies Used
 
 - HTML / CSS / JavaScript
 
@@ -26,52 +26,52 @@ ContestHub allows:
 
 - Authentication System (JWT / Firebase Auth)
 
-⭐# Core Features
+⭐ Core Features
 
-🔐 - Role-based system (Admin, Creator, User)
+🔐  Role-based system (Admin, Creator, User)
 
-🏆 - Create and participate in contests
+🏆  Create and participate in contests
 
-✔️ -  Admin approves or rejects contests
+✔️  Admin approves or rejects contests
 
-🔁 - Creator can update or delete contests
+🔁  Creator can update or delete contests
 
-🎁 - Prize and winner declaration system
+🎁  Prize and winner declaration system
 
-👤 - Admin can change user roles
+👤  Admin can change user roles
 
-📊  - Dashboard for each role
+📊   Dashboard for each role
 
-📦# Dependencies
+📦 Dependencies
 
 
 
-- react
-- react-router
-- axios
-- firebase
-- tailwindcss
-- dotenv
-- express
-- mongoose
+ react
+react-router
+ axios
+ firebase
+ tailwindcss
+ dotenv
+ express
+mongoose
 
 
 You can copy dependencies from your package.json later.
 
-🧭# How to Run the Project Locally
+🧭 How to Run the Project Locally
 
 ## Follow these steps:
 
-1️⃣ - Clone  repository
+1️⃣ -Clone  repository
  
 
-2️⃣ - Openfo lder
+2️⃣  Openfo lder
 
 
-3️⃣ - Install dependencies
+3️⃣  Install dependencies
 npm install
 
-4️⃣ - Create .env file (if needed)
+4️⃣ - Create .env file 
 
 ## Add keys like:
 
@@ -83,10 +83,10 @@ npm install
 npm run dev
 
 
-Your project will run on:
 
 
-🌍 # Live Project Links
+
+🌍  Live Project Links
 
 🔗 Live Website: https://contest-hub-client-f1f2b.web.app/
 
