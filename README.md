@@ -1,26 +1,96 @@
 # ContestHub
-https://contest-hub-client-f1f2b.web.app/
 
-# 10 bullet point about ContestHub
-1.Online Platform for hosting and participating in contest.
 
-2.User-friendly and clean interface.
 
-3.Role-based access for Admin,Creator and Participant.
+🚀 # Project Overview
 
-4.Secure user authentication system.
+ContestHub allows:
 
-5.Contest creation and management system.
+- Creators to create and manage contests
 
-6.Admin aproval control.
+- Users to participate and win prizes
 
-7.Easy contest participation and task submission.
+ - Admins to control the platform and roles
 
-8.Responsive design for all device.
+ - It is designed to make online competitions simple, fair, and organized.
 
-9.Real-time contest status and updates.
+🛠️  # Technologies Used
 
-10.Fair and transparent winner selection system.
+- HTML / CSS / JavaScript
+
+- React / JavaScipt /Tailwind CSS/
+
+- Node.js / Express/cors
+
+- MongoDB / Firebase 
+
+- Authentication System (JWT / Firebase Auth)
+
+⭐# Core Features
+
+🔐 - Role-based system (Admin, Creator, User)
+
+🏆 - Create and participate in contests
+
+✔️ -  Admin approves or rejects contests
+
+🔁 - Creator can update or delete contests
+
+🎁 - Prize and winner declaration system
+
+👤 - Admin can change user roles
+
+📊  - Dashboard for each role
+
+📦# Dependencies
+
+
+
+- react
+- react-router
+- axios
+- firebase
+- tailwindcss
+- dotenv
+- express
+- mongoose
+
+
+You can copy dependencies from your package.json later.
+
+🧭# How to Run the Project Locally
+
+## Follow these steps:
+
+1️⃣ - Clone  repository
+ 
+
+2️⃣ - Openfo lder
+
+
+3️⃣ - Install dependencies
+npm install
+
+4️⃣ - Create .env file (if needed)
+
+## Add keys like:
+
+- VITE_API_KEY=
+- DATABASE_URL=
+- JWT_SECRET=
+
+5️⃣ - Run the project
+npm run dev
+
+
+Your project will run on:
+
+
+🌍 # Live Project Links
+
+🔗 Live Website: https://contest-hub-client-f1f2b.web.app/
+
+
 
 
 
