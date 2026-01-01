@@ -65,7 +65,7 @@ You can copy dependencies from your package.json later.
 1️⃣ Clone  repository
  
 
-2️⃣  Openfo lder
+2️⃣  Open a folder
 
 
 3️⃣  Install dependencies
@@ -75,9 +75,9 @@ npm install
 
 ## Add keys like:
 
- VITE_API_KEY=
- DATABASE_URL=
- JWT_SECRET=
+ - VITE_API_KEY=
+ - DATABASE_URL=
+ - JWT_SECRET=
 
 5️⃣  Run the project
 npm run dev
