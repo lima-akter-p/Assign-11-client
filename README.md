@@ -4,7 +4,7 @@
 
 
 🚀  Project Overview
-HomeNest connects property owners with buyers and renters through a simple and user-friendly interface.
+
 
 ContestHub allows:
 
