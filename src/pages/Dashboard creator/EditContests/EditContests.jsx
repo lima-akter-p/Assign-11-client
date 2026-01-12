@@ -44,6 +44,8 @@ export default function EditContest() {
         <input {...register("participants")} type="number" className="input input-bordered w-full" />
 
         <input {...register("priceMoney")} type="number" className="input input-bordered w-full" />
+         <input {...register("image")}  type="photo" className="input input-bordered w-full" />
+          
 
         {/* <input {...register("deadline")} type="date" className="input input-bordered w-full" /> */}
            <Controller

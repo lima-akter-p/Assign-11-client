@@ -34,6 +34,7 @@ export default function MotivationSection() {
   return (
     <section
       className="
+      mt-30
   py-16 
   bg-linear-to-r 
   from-purple-100 to-indigo-100 
@@ -41,7 +42,7 @@ export default function MotivationSection() {
   text-center px-4
 "
     >
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto my-10">
         <h2
           className="
       text-4xl font-extrabold 

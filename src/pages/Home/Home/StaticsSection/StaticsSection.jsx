@@ -25,7 +25,7 @@ export default function StatisticsSection() {
   }, []);
 
   return (
-    <section className="py-16 bg-linear-to-r from-purple-100 to-indigo-100">
+    <section className="mt-30  p-8 bg-linear-to-r from-purple-100 to-indigo-100">
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-4xl font-extrabold text-purple-800 mb-10">
           📊 Our Growth in Numbers

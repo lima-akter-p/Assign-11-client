@@ -6,11 +6,21 @@ import { ToastContainer } from 'react-toastify';
 
 const Rootlayouts = () => {
     return (
-        <div className='max-w-[1300px] mx-auto'>
+        <div className=''>
             <ToastContainer></ToastContainer>
-            <NavBar></NavBar>
+            <div className='bg-amber-50 w-full sticky top-0 z-50'>
+                
+             <NavBar></NavBar>
+
+            </div>
+           
+             <div className='max-w-[1300px] mx-auto '>
             <Outlet></Outlet>
             <Footer></Footer>
+
+             </div>
+           
+          
         </div>
     );
 };

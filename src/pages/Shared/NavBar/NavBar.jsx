@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import logoImg from "../../../assets/logo.png";
 import useAuth from "../../../Hooks/useAuth";
 import { toast } from "react-toastify";
@@ -20,36 +20,64 @@ export default function NavBar() {
         setOpen(false);
       })
       .catch((error) => console.log(error));
+      
   };
+  const navClass = ({ isActive }) =>
+  isActive
+    ? "text-blue-600 font-semibold border-b-2 border-blue-600"
+    : "text-gray-950 hover:text-blue-500";
+
+
+  
 
   const links = (
-    <>
-      <Link to="/" className="hover:text-blue-500">
+  <>
+    <div className="flex gap-10">
+      <NavLink to="/" className={navClass}>
         Home
-      </Link>
-      <Link to="all-contests" className="hover:text-blue-500">
-        All Contests
-      </Link>
-       <Link to="about-us" className="hover:text-blue-500">
-        About Us
-      </Link>
-       <Link to="contac-us" className="hover:text-blue-500">
-        Contac Us
-      </Link>
-      <Mytheme></Mytheme>
+      </NavLink>
 
-      {/* {user && (
-        <>
-          <Link to="/dashboard/add-contests" className="hover:text-blue-500">Add Contest</Link>
-          <Link to="/dashboard/my-contests" className="hover:text-blue-500"> My Contests</Link>
-           
-        </>
-      )} */}
-    </>
-  );
+      <NavLink to="all-contests" className={navClass}>
+        All Contests
+      </NavLink>
+
+      <NavLink to="about-us" className={navClass}>
+        About Us
+      </NavLink>
+    </div>
+
+    {user && (
+      <div className="flex gap-10">
+        <NavLink to="contac-us" className={navClass}>
+          Contac Us
+        </NavLink>
+
+        <NavLink to="terms-condition" className={navClass}>
+          Terms And Condition
+        </NavLink>
+         <NavLink to="privecy-policy" className={navClass}>
+          Privecy And Policy
+        </NavLink>
+
+        <NavLink to="faq" className={navClass}>
+          FAQ
+        </NavLink>
+
+      </div>
+    )}
+    <Mytheme></Mytheme>
+
+    
+  </>
+);
+
+
+      
+
+  
 
   return (
-    <nav className="w-full shadow-md  px-4 py-3 flex justify-between items-center relative">
+    <nav className=" shadow-md  px-4 py-3 flex justify-between items-center">
       {/* Logo */}
       <div className="flex items-center gap-2">
         <Link to="/">
@@ -77,7 +105,7 @@ export default function NavBar() {
               />
 
               {profileOpen && (
-                <div className="absolute right-0 bg-white shadow-lg rounded-lg w-40 mt-2 py-2 z-50">
+                <div className="absolute right-0  shadow-lg rounded-lg w-40 mt-2 py-2 z-50">
                   <p className="px-4 py-2 font-semibold">{user.displayName}</p>
                   <Link
                     className="px-4 py-2 block hover:bg-gray-100"
@@ -86,7 +114,7 @@ export default function NavBar() {
                   >
                     Dashboard
                   </Link>
-                  
+
                   <button
                     className="px-4 py-2 w-full text-left hover:bg-gray-100"
                     onClick={handleLogOut}

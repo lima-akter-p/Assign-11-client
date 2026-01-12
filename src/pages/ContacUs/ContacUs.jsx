@@ -1,78 +1,116 @@
-import React from "react";
-import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
-
 const ContactUs = () => {
   return (
-    <div className="min-h-screen bg-gray-50 py-16 px-4">
-      <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-md p-8">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-10">
-          Contact Us
-        </h1>
+    <section className="bg-gray-50 dark:bg-gray-900 py-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-        <div className="grid md:grid-cols-2 gap-10">
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <p className="text-gray-600 text-lg">
-              Have questions, feedback, or need support? Feel free to reach out to us.
-              We are always happy to help you.
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-4xl font-bold text-violet-900 dark:text-white">
+            Contact Us
+          </h2>
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+            Have questions, feedback, or partnership inquiries?  
+            Our team is here to help you.
+          </p>
+        </div>
+
+        {/* Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+
+          {/* Left Info */}
+          <div className="space-y-8">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              At <span className="font-semibold text-gray-900 dark:text-white">
+                ContestHub
+              </span>, we value clear communication and user support. Whether
+              you need help with contests, account issues, or collaboration
+              opportunities, feel free to reach out to us anytime.
             </p>
 
-            <div className="flex items-center gap-4">
-              <FaEnvelope className="text-blue-600 text-xl" />
-              <span className="text-gray-700">support@contesthub.com</span>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <FaPhoneAlt className="text-blue-600 text-xl" />
-              <span className="text-gray-700">+880 1234 567 890</span>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <FaMapMarkerAlt className="text-blue-600 text-xl" />
-              <span className="text-gray-700">Dhaka, Bangladesh</span>
+            <div className="space-y-5">
+              <ContactItem
+                title="Email Support"
+                value="support@contesthub.com"
+                description="For general inquiries and assistance"
+              />
+              <ContactItem
+                title="Business & Partnerships"
+                value="business@contesthub.com"
+                description="For collaborations and proposals"
+              />
+              <ContactItem
+                title="Customer Care"
+                value="+880 1XXXXXXXXX"
+                description="Available Sunday–Thursday, 10 AM – 6 PM"
+              />
             </div>
           </div>
 
-          {/* Contact Form */}
-          <form className="space-y-5">
-            <div>
-              <label className="block font-semibold text-gray-700 mb-1">Name</label>
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
-              />
-            </div>
+          {/* Right Form */}
+          <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm">
+            <form className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter your name"
+                  className="mt-2 w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-transparent px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
 
-            <div>
-              <label className="block font-semibold text-gray-700 mb-1">Email</label>
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
-              />
-            </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="mt-2 w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-transparent px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
 
-            <div>
-              <label className="block font-semibold text-gray-700 mb-1">Message</label>
-              <textarea
-                rows="4"
-                placeholder="Write your message"
-                className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
-              ></textarea>
-            </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Message
+                </label>
+                <textarea
+                  rows="4"
+                  placeholder="Write your message here..."
+                  className="mt-2 w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-transparent px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                ></textarea>
+              </div>
 
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition"
-            >
-              Send Message
-            </button>
-          </form>
+              <button
+                type="submit"
+                className="w-full rounded-xl bg-indigo-600 px-6 py-3 text-white font-semibold hover:bg-indigo-700 transition"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
+/* Reusable Component */
+const ContactItem = ({ title, value, description }) => (
+  <div>
+    <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+      {title}
+    </h4>
+    <p className="text-indigo-600 dark:text-indigo-400 font-medium">
+      {value}
+    </p>
+    <p className="text-gray-600 dark:text-gray-400 text-sm">
+      {description}
+    </p>
+  </div>
+);
+
 export default ContactUs;
+
+

@@ -30,7 +30,7 @@ export default function UpcomingBigContests() {
   }, [targetDate]);
 
   return (
-    <section className="py-16 bg-linear-to-r from-purple-100 to-indigo-100">
+    <section className="mt-30 p-8 bg-linear-to-r from-purple-100 to-indigo-100">
       <div className="max-w-7xl mx-auto px-4">
         
         <h2 className="text-4xl font-bold text-center text-purple-800 mb-20">

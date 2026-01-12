@@ -20,7 +20,7 @@ const PopularContest = () => {
     .sort((a, b) => b.participants - a.participants)
     .slice(0, 5);
   return (
-    <div className="my-10">
+    <div className="my-30">
       {/* 🔥 Header + Show All Button */}
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-4xl font-extrabold text-violet-700 drop-shadow">

@@ -26,7 +26,12 @@ import MyParticipatedContests from "../pages/Dashboard creator/MyPaticipatedCont
 import MyWinningContests from "../pages/Dashboard creator/MyWinningContest/MyWinningContest";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContacUs/ContacUs";
+
+import FAQ from "../Components/FAQ/FAQ";
+import TermsAndConditions from "../Components/TermsAndCondition/TermsAndCodition";
 import MyProfile from "../pages/Dashboard creator/MyProfile/MyProfile";
+import PrivacyPolicy from "../Components/PrivacyAndPolicy/PrivacyAndPolicy";
+import Support from "../Components/Support/Support";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +50,27 @@ export const router = createBrowserRouter([
       {
         path:"contac-us",
         element:<ContactUs></ContactUs>
+      },
+      {
+        path:"terms-condition",
+        element:<TermsAndConditions></TermsAndConditions>
+      },
+      {
+
+        path:"privecy-policy",
+        element:<PrivacyPolicy></PrivacyPolicy>
+
+      },
+      {
+
+        path:"support",
+        element:<Support></Support>
+
+      },
+
+      {
+        path:"faq",
+        element:<FAQ></FAQ>
       },
 
       
@@ -67,11 +93,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "all-contests",
-        element: (
-          <PrivateRoute>
-            <AllContests></AllContests>
-          </PrivateRoute>
-        ),
+        element: <AllContests></AllContests>
+          
+        
       },
       // {
         
