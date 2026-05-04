@@ -62,7 +62,7 @@ You can copy dependencies from your package.json later.
 
 ## Clone the repository
 ```bash
-(https://github.com/lima-akter-p/smart-home-client.git)
+(https://github.com/lima-akter-p/Assign-11-client.git)
 ```
 
 
