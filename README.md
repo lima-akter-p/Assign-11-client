@@ -60,28 +60,22 @@ You can copy dependencies from your package.json later.
 
 🧭 How to Run the Project Locally
 
-## Clone  repository
+## Clone the repository
+```bash
+(https://github.com/lima-akter-p/smart-home-client.git)
+```
 
- 
 
-2️⃣  Open a folder
+## Go to the project folder
 
 
-3️⃣  Install dependencies
-npm install
+## Install dependencies
+  npm install
 
-4️⃣  Create .env file 
 
-## Add keys like:
 
- - VITE_API_KEY=
- - DATABASE_URL=
- - JWT_SECRET=
-
-5️⃣  Run the project
+## Start development server
 npm run dev
-
-
 
 
 
