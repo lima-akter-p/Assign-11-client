@@ -49,26 +49,19 @@ ContestHub allows:
 📊   Dashboard for each role
 
 📦 Dependencies
-
-
-
  react,
-react-router,
+ react-router,
  axios,
  firebase,
  tailwindcss,
  dotenv,
  express,
-mongoose
-
-
 You can copy dependencies from your package.json later.
 
 🧭 How to Run the Project Locally
 
-## Follow these steps:
+## Clone  repository
 
-1️⃣ Clone  repository
  
 
 2️⃣  Open a folder
