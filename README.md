@@ -4,6 +4,10 @@
 
 
 🚀  Project Overview
+ContestHub is a platform where creators can create and manage contests easily with full control over rules, deadlines, and submissions
+Users can participate in contests, showcase their skills, and win exciting prizes
+Admins can manage the entire platform, monitor activities, and control user roles and permissions
+It is designed to make online competitions simple, fair, secure, and well-organized for everyone involved.
 
 
 ContestHub allows:
